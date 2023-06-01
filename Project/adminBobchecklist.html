@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Student Task Progress</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8e9df;
+          }
+          
+          h1 {
+            text-align: center;
+            background-color: rgb(255, 255, 255);
+          }
+
+          h4 {
+            text-align: center;
+          }
+          
+          .progress-container {
+            background-color: #ddd;
+            height: 20px;
+            width: 80%;
+            margin: 20px auto;
+          }
+          
+          .progress-bar {
+            background-color: #4CAF50;
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease-in-out;
+          }
+          
+          .task-list {
+            list-style: none;
+            margin: 20px auto;
+            padding: 0;
+            width: 80%;
+          }
+          
+          .task-list li {
+            margin-bottom: 10px;
+          }
+          
+          input[type=checkbox] {
+            display: none;
+          }
+          
+          input[type=checkbox] + label {
+            cursor: pointer;
+          }
+          
+          input[type=checkbox]:checked ~ .progress-container .progress-bar {
+            width: calc(100% / 4);
+          }
+
+          .column{
+            width: 33%;
+          }
+
+          .checklist {
+            margin: 0 auto;
+            max-width: 1000px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 100px;
+          }
+
+    </style>
+  </head>
+  <body>
+    <h1>Bob's Dashboard</h1>
+    <h1>Incomplete Tasks</h1>
+    <div class = "checklist">
+      <div class="column">
+        <ul class="task-list"><b>Clinical Skills<br><br>
+        </b>
+          <li><input type="checkbox" id="task2"><label for="task2">VAC</label></li>
+          <li><input type="checkbox" id="task3"><label for="task3">Wet-to-dry wound care<br><br><br></label></li>
+        </ul>
+        <ul class="task-list"><b>Intraoperative Skills<br><br></b>
+            <li><input type="checkbox" id="task5"><label for="task5">Preoperative Preparation</label></li>
+            <li><input type="checkbox" id="task6"><label for="task6">Suture<br><br><br></label></li>
+        </ul>
+        <ul class="task-list"><b>Orders<br><br></b>
+            <li><input type="checkbox" id="task8"><label for="task8">Discharge</label></li>
+            <li><input type="checkbox" id="task9"><label for="task9">Pain Management</label></li>
+        </ul>
+      </div>
+      <div class="column">
+        <ul class="task-list"><b>Surgical Cases<br><br></b>
+          <li><input type="checkbox" id="task11"><label for="task11">Colorectal Surgery</label></li>
+          <li><input type="checkbox" id="task12"><label for="task12">Lap/Hernia Repair<br><br><br></label></li>
+        </ul>
+        <ul class="task-list"><b>Surgical Diseases<br><br></b>
+            <li><input type="checkbox" id="task14"><label for="task14">Trauma</label></li>
+            <li><input type="checkbox" id="task15"><label for="task15">Hernia<br><br><br></label></li>
+        </ul>
+        <ul class="task-list"><b>Surgical Procedures<br><br></b>
+            <li><input type="checkbox" id="task17"><label for="task17">2 Handed Knot</label></li>
+            <li><input type="checkbox" id="task18"><label for="task18">Sub cuticular suture</label></li>
+        </ul>
+      </div>
+      <div class="column">
+        <ul class="task-list"><b>Presentations<br><br></b>
+          <li><input type="checkbox" id="task20"><label for="task20">Clinical Patient</label></li>
+          <li><input type="checkbox" id="task21"><label for="task21">OPD Presentations<br><br><br></label></li>
+        </ul>
+        <ul class="task-list"><b>Patient Care<br><br></b>
+            <li><input type="checkbox" id="task23"><label for="task23">Proctored H&P</label></li>
+            <li><input type="checkbox" id="task24"><label for="task24">Pediatric Consult<br><br><br></label></li>
+        </ul>
+        <ul class="task-list"><b>Imaging<br><br></b>
+            <li><input type="checkbox" id="task26"><label for="task26">Bowel CT Scan</label></li>
+            <li><input type="checkbox" id="task27"><label for="task26">Ventral CT Scan</label></li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+        const checkboxes = document.querySelectorAll('input[type=checkbox]');
+const progressBar = document.querySelector('.progress-bar');
+
+checkboxes.forEach((checkbox) => {
+  checkbox.addEventListener('change', () => {
+    const checkedCount = document.querySelectorAll('input[type=checkbox]:checked').length;
+    const totalCount = checkboxes.length;
+    const percentage = Math.floor((checkedCount / totalCount) * 100);
+    progressBar.style.width = percentage + '%';
+  });
+});
+    </script>
+  </body>
+</html>
